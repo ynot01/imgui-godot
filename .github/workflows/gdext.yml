@@ -44,10 +44,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, macos-latest, windows-latest]
+        os: [ubuntu-20.04, macos-latest, windows-latest]
         precision: [single, double]
         include:
-          - os: ubuntu-22.04
+          - os: ubuntu-20.04
             name: 🐧Linux
           - os: macos-latest
             name: 🍎macOS
