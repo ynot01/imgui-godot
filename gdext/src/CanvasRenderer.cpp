@@ -35,7 +35,7 @@ void CanvasRenderer::Impl::RenderOne(RID vprid, ImDrawData* drawData)
     ViewportData& vd = vpData.find(vprid)->second;
     RID parent = vd.rootCanvasItem;
 
-    if (!canvasItemPools.contains(parent))
+    if (!canvasItemPools.count(parent) > 0)
         canvasItemPools[parent] = {};
 
     std::vector<RID>& children = canvasItemPools[parent];

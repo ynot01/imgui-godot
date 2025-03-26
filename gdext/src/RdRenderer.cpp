@@ -120,7 +120,7 @@ void RdRenderer::Impl::SetupBuffers(ImDrawData* drawData)
                 continue;
 
             usedTextures.insert(texid);
-            if (!uniformSets.contains(texid))
+            if (!uniformSets.count(texid) > 0)
             {
                 Ref<RDUniform> uniform;
                 uniform.instantiate();
@@ -301,7 +301,7 @@ void RdRenderer::Render(RID fb, ImDrawData* drawData)
             const ImDrawCmd& drawCmd = cmdList->CmdBuffer[cmdi];
             if (drawCmd.ElemCount == 0)
                 continue;
-            if (!impl->uniformSets.contains(drawCmd.GetTexID()))
+            if (!impl->uniformSets.count(drawCmd.GetTexID()) > 0)
                 continue;
 
             const RID idxArray =
@@ -363,7 +363,7 @@ void RdRenderer::FreeUnusedTextures()
 
     for (ImTextureID texid : keys)
     {
-        if (!impl->usedTextures.contains(texid))
+        if (!impl->usedTextures.count(texid) > 0)
         {
             RD->free_rid(impl->uniformSets[texid]);
             impl->uniformSets.erase(texid);

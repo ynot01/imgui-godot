@@ -22,7 +22,7 @@ env = SConscript("godot-cpp/SConstruct")
 env.CacheDir("scons_cache", CustomCacheDir)
 env.Append(CPPDEFINES=['IMGUI_USER_CONFIG="\\"imconfig-godot.h\\""', "IGN_EXPORT"])
 env.Append(CPPPATH=["src/", "imgui/", "include/", "gen/"])
-env.Replace(CXXFLAGS=str(env["CXXFLAGS"]).replace("c++17", "c++20"))
+# env.Replace(CXXFLAGS=str(env["CXXFLAGS"]).replace("c++17", "c++20"))
 
 windows = env["platform"] == "windows"
 linux = env["platform"] == "linux"
